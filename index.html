@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="phoneBook">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Telefonica</title>
+  <!-- CSS only -->
+  <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <style>
+    .jumbotron {
+      display: flex;
+      width: 400px;
+
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #d3d3d3;
+      margin-top: 4%;
+      flex-direction: column;
+      padding:10px;
+    }
+    .table {
+      margin-top: 20px;
+    }
+  </style>
+  <script src="lib/angular/angular.js"></script>
+  <script>
+    angular.module("phoneBook", []);
+    angular.module("phoneBook").controller("phoneBookCtrl", function ($scope) {
+     $scope.app = "Lista Telefônica";
+     $scope.contatos = [
+      {nome: "Felipe", telefone: "98449876"},
+      {nome: "Maria", telefone: "98765532"},
+      {nome: "João", telefone: "987643232"}
+    ]
+    })
+  </script>
+</head>
+<body ng-controller="phoneBookCtrl">
+  <div class="jumbotron">
+    <h4>{{app}}</h4>
+    <table class="table table-striped">
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+      </tr>
+      <tr ng-repeat="contato in contatos">
+        <td>{{contato.nome}}</td>
+        <td>{{contato.telefone}}</td>
+      </tr>
+    </table>
+
+  </div>
+</body>
+</html>
