@@ -24,6 +24,13 @@
     .table {
       margin-top: 20px;
     }
+
+    .form-control {
+      margin-bottom: 5px;
+    }
+    .btn {
+      width: 100%;
+    }
   </style>
   <script src="lib/angular/angular.js"></script>
   <script>
@@ -34,8 +41,12 @@
       {nome: "Felipe", telefone: "98449876"},
       {nome: "Maria", telefone: "98765532"},
       {nome: "João", telefone: "987643232"}
-    ]
-    })
+    ];
+    $scope.addContato = (contato) => {
+      $scope.contatos.push(angular.copy(contato));
+      delete $scope.contato;
+    };
+    });
   </script>
 </head>
 <body ng-controller="phoneBookCtrl">
@@ -51,7 +62,11 @@
         <td>{{contato.telefone}}</td>
       </tr>
     </table>
-
+    <br/>
+    <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
+    <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+    <button class="btn btn-primary" ng-click="addContato(contato)">Adicionar Contato</button>
+    {{contato}}
   </div>
 </body>
 </html>
