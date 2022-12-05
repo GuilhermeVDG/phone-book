@@ -7,92 +7,11 @@
   <title>Lista Telefonica</title>
   <!-- CSS only -->
   <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
-  <style>
-    .jumbotron {
-      display: flex;
-      width: 450px;
-
-      align-items: center;
-      justify-content: center;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: #d3d3d3;
-      margin-top: 4%;
-      flex-direction: column;
-      padding: 50px;
-    }
-    .table {
-      margin-top: 20px;
-    }
-
-    .form-control {
-      margin-bottom: 5px;
-      width: 350px;
-      margin-bottom: 10px;
-    }
-    .btn {
-      width: 100%;
-      margin-bottom: 5px;
-    }
-
-    .selecionado {
-      background-color: rgb(233, 231, 133);
-    }
-    .alert {
-      width: 300px;
-    }
-
-  </style>
+  <link href="css/app.css" rel="stylesheet">
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-messages.js"></script>
-
-  <script>
-    angular.module("phoneBook", ["ngMessages"]);
-    angular.module("phoneBook").controller("phoneBookCtrl", ($scope, $http) => {
-      $scope.app = "Lista Telefônica";
-      $scope.contatos = [];
-      $scope.operadoras = [];
-      const carregarContatos = async () => {
-        try {
-          const response = await $http.get('http://localhost:3050/contatos');
-          $scope.contatos = response.data;
-          console.log(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      const carregarOperadoras = async () => {
-        try {
-          const response = await $http.get('http://localhost:3050/operadoras');
-          $scope.operadoras = response.data;
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      $scope.addContato = async (contato) => {
-        contato.data = new Date();
-        const response = await $http.post('http://localhost:3050/contatos', contato);
-        delete $scope.contato;
-        $scope.contatoForm.$setPristine();
-        carregarContatos();
-      };
-      $scope.removeContatos = (contatos) => {
-        $scope.contatos = contatos.filter(contato => !contato.selecionado);
-      };
-      $scope.isContatoSelecionado = contatos => {
-        return contatos.some(contato => contato.selecionado)
-      };
-      $scope.ordernarPor = campo => {
-        $scope.ordenacao = campo;
-        $scope.direcao = !$scope.direcao;
-      };
-
-      carregarContatos();
-      carregarOperadoras();
-    });
-  </script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/phoneBookCtrl.js"></script>
 </head>
 <body ng-controller="phoneBookCtrl">
   <div class="jumbotron">
