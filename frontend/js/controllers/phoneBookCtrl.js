@@ -1,4 +1,4 @@
-angular.module("phoneBook").controller("phoneBookCtrl", ($scope, $http) => {
+angular.module("phoneBook").controller("phoneBookCtrl", ($scope, $http, contatosAPI) => {
   $scope.app = "Lista Telefônica";
   $scope.contatos = [];
 
@@ -6,7 +6,7 @@ angular.module("phoneBook").controller("phoneBookCtrl", ($scope, $http) => {
   $scope.operadoras = [];
   const carregarContatos = async () => {
     try {
-      const response = await $http.get('http://localhost:3050/contatos');
+      const response = await contatosAPI.getContatos();
       $scope.contatos = response.data;
     } catch (error) {
       console.log(error);
@@ -15,7 +15,7 @@ angular.module("phoneBook").controller("phoneBookCtrl", ($scope, $http) => {
 
   const carregarOperadoras = async () => {
     try {
-      const response = await $http.get('http://localhost:3050/operadoras');
+      const response = await contatosAPI.getOperadoras();
       $scope.operadoras = response.data;
     } catch (error) {
       console.log(error);
@@ -24,10 +24,15 @@ angular.module("phoneBook").controller("phoneBookCtrl", ($scope, $http) => {
 
   $scope.addContato = async (contato) => {
     contato.data = new Date();
-    const response = await $http.post('http://localhost:3050/contatos', contato);
-    delete $scope.contato;
-    $scope.contatoForm.$setPristine();
-    carregarContatos();
+    try {
+      const response = await contatosAPI.postContato(contato);
+      $scope.contatos = response.data;
+      delete $scope.contato;
+      $scope.contatoForm.$setPristine();
+      carregarContatos();
+    } catch (error) {
+      console.log(error);
+    }
   };
   $scope.removeContatos = (contatos) => {
     $scope.contatos = contatos.filter(contato => !contato.selecionado);
