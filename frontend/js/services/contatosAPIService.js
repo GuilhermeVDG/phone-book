@@ -1,14 +1,14 @@
-angular.module("phoneBook").factory("contatosAPI", ($http) => {
+angular.module("phoneBook").factory("contatosAPI", ($http, config) => {
   const _getContatos = () => {
-    return $http.get("http://localhost:3050/contatos");
+    return $http.get(`${config.baseUrl}/contatos`);
   };
 
   const _getOperadoras = () => {
-    return $http.get("http://localhost:3050/operadoras");
+    return $http.get(`${config.baseUrl}/operadoras`);
   }
 
   const _postContato = contato => {
-    return $http.post('http://localhost:3050/contatos', contato);
+    return $http.post(`${config.baseUrl}/contatos`, contato);
   };
 
   return {

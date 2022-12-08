@@ -34,4 +34,4 @@ app.get('/operadoras', (req, res) => {
 app.post('/contatos', (req, res) => {
   contatos.push(req.body);
   return res.json(contatos);
-})
+});
