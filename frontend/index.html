@@ -16,6 +16,8 @@
   <script src="js/config/configValue.js"></script>
   <script src="js/services/serialGenerator.js"></script>
   <script src="js/config/serialGeneratorConfig.js"></script>
+  <script src="js/filters/nameFilter.js"></script>
+  <script src="js/filters/ellipsisFilter.js"></script>
 </head>
 <body ng-controller="phoneBookCtrl">
   <div class="jumbotron">
@@ -33,7 +35,7 @@
       <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos | filter:filtroBusca | orderBy:ordenacao:direcao">
         <td><input type="checkbox" ng-model="contato.selecionado"/></td>
         <td>{{contato.serial}}</td>
-        <td>{{contato.nome}}</td>
+        <td>{{contato.nome | name | ellipsis:9}}</td>
         <td>{{contato.telefone}}</td>
         <td>{{contato.operadora.nome | uppercase}}</td>
         <td>{{contato.data | date: 'dd/MM/yyyy'}}</td>
