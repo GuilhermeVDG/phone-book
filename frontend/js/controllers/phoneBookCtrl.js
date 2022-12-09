@@ -9,6 +9,7 @@ angular.module("phoneBook").controller("phoneBookCtrl", ($scope, contatosAPI, se
       const response = await contatosAPI.getContatos();
       $scope.contatos = response.data;
     } catch (error) {
+      $scope.error = 'Não foi possível carregar seus contatos'
       console.log(error);
     }
   }
