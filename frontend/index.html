@@ -25,7 +25,7 @@
 <body ng-controller="phoneBookCtrl">
   <div class="jumbotron">
     <h4>{{app}}</h4>
-    <div ui-alert></div>
+    <ui-alert title="OPS, ACONTECEU UM ERRO!" message="error" ng-if="error"></ui-alert>
     <input class="form-control" type="text" ng-model="filtroBusca" placeholder="Buscar contato..."/>
     <table ng-show="contatos.length > 0" class="table table-striped">
       <tr>

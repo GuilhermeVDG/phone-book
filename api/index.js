@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 app.listen('3050', () => {
-  console.log('Server started in potr 3050');
+  console.log('Server started in port 3050');
 });
 
 app.get('/contatos', (req, res) => {

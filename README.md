@@ -1,0 +1,2 @@
+- A PhoneBook using angularjs <br/>
+- Use npm i to install dependencies

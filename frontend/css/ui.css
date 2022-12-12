@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 }
 
-.ui-alert-tittle {
+.ui-alert-title {
   text-align: center;
   color: #af4341;
   font-weight: bold;
@@ -14,6 +14,7 @@
 }
 
 .ui-alert-message {
+  text-align: center;
   color: #af4341;
   font-size: 16px;
 }
