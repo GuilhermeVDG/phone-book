@@ -1,9 +1,9 @@
 angular.module("phoneBook").controller("phoneBookCtrl", ($scope, contatosAPI, serialGenerator) => {
   $scope.app = "Lista Telefônica";
   $scope.contatos = [];
-
-
   $scope.operadoras = [];
+
+
   const carregarContatos = async () => {
     try {
       const response = await contatosAPI.getContatos();
@@ -25,7 +25,6 @@ angular.module("phoneBook").controller("phoneBookCtrl", ($scope, contatosAPI, se
 
   $scope.addContato = async (contato) => {
     contato.serial = serialGenerator.generate();
-    contato.data = new Date();
     try {
       const response = await contatosAPI.postContato(contato);
       $scope.contatos = response.data;
