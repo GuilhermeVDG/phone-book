@@ -1,0 +1,47 @@
+<div class="jumbotron">
+    
+  <ui-accordions>
+    
+    <ui-accordion title="Lorem ipsum...">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur blanditiis et voluptatem quam nesciunt, eaque dolores illo similique earum consequuntur reprehenderit praesentium consectetur consequatur ab quisquam sed. At, quae laboriosam!
+    </ui-accordion>
+
+    <ui-accordion title="Tabuada de 7">
+      7 x 1 = 7 <br/>
+      7 x 2 = 14 <br/>
+      7 x 3 = 21 <br/>
+      7 x 4 = 28 <br/>
+      7 x 5 = 35 <br/>
+      7 x 6 = 42 <br/>
+      7 x 7 = 49 <br/>
+      7 x 8 = 56 <br/>
+      7 x 9 = 63 <br/>
+      7 x 10 = 70
+    </ui-accordion>
+
+  </ui-accordions>
+
+  <h4>{{app}}</h4>
+  <ui-alert title="OPS, ACONTECEU UM ERRO!" message="error" ng-if="error"></ui-alert>
+  <input class="form-control" type="text" ng-model="filtroBusca" placeholder="Buscar contato..."/>
+  <table ng-show="contatos.length > 0" class="table table-striped">
+    <tr>
+      <th></th>
+      <th>Serial</th>
+      <th><a href="" ng-click="ordernarPor('nome')">Nome</a></th>
+      <th><a href="" ng-click="ordernarPor('telefone')">Telefone</a></th>
+      <th>Operadora</th>
+      <th>Data</th>
+    </tr>
+    <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos | filter:filtroBusca | orderBy:ordenacao:direcao">
+      <td><input type="checkbox" ng-model="contato.selecionado"/></td>
+      <td>{{contato.serial}}</td>
+      <td>{{contato.nome | name | ellipsis:9}}</td>
+      <td>{{contato.telefone}}</td>
+      <td>{{contato.operadora.nome | uppercase}}</td>
+      <td>{{contato.data | date: 'dd/MM/yyyy'}}</td>
+    </tr>
+  </table>
+  <br/>
+  <a href="#!/novoContato" class="btn btn-primary">Novo Contato</a>
+</div>

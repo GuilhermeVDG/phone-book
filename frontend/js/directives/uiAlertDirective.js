@@ -1,4 +1,4 @@
-angular.module("phoneBook").directive("uiAlert", () => {
+angular.module("phoneBook").directive("uiAlert", function (){
   return {
     templateUrl: "view/alert.html",
     replace: true,

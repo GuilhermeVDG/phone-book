@@ -1,4 +1,4 @@
-angular.module("phoneBook").controller("phoneBookCtrl", ($scope, contatosAPI, serialGenerator) => {
+angular.module("phoneBook").controller("phoneBookCtrl", function ($scope, contatosAPI, serialGenerator) {
   $scope.app = "Lista Telefônica";
   $scope.contatos = [];
   $scope.operadoras = [];
@@ -23,18 +23,6 @@ angular.module("phoneBook").controller("phoneBookCtrl", ($scope, contatosAPI, se
     }
   }
 
-  $scope.addContato = async (contato) => {
-    contato.serial = serialGenerator.generate();
-    try {
-      const response = await contatosAPI.postContato(contato);
-      $scope.contatos = response.data;
-      delete $scope.contato;
-      $scope.contatoForm.$setPristine();
-      carregarContatos();
-    } catch (error) {
-      console.log(error);
-    }
-  };
   $scope.removeContatos = (contatos) => {
     $scope.contatos = contatos.filter(contato => !contato.selecionado);
   };
