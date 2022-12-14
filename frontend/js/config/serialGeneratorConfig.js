@@ -1,3 +1,3 @@
 angular.module("phoneBook").config(function (serialGeneratorProvider) {
-  serialGeneratorProvider.setLength(20);
+  serialGeneratorProvider.setLength(5);
 });

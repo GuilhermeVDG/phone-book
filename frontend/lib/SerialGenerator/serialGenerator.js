@@ -1,4 +1,6 @@
-angular.module("phoneBook").provider("serialGenerator", function () {
+angular.module("serialGenerator", []);
+
+angular.module("serialGenerator").provider("serialGenerator", function () {
   let _length = 0;
 
   this.setLength = (length) => {

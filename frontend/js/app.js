@@ -1,1 +1,1 @@
-angular.module("phoneBook", ["ngMessages"]);
+angular.module("phoneBook", ["ngMessages", "serialGenerator"]);
