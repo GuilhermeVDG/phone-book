@@ -22,9 +22,32 @@
   <script src="js/filters/ellipsisFilter.js"></script>
   <script src="js/directives/uiAlertDirective.js"></script>
   <script src="js/directives/uiDateDirective.js"></script>
+  <script src="js/directives/uiAccordionDirective.js"></script>
 </head>
 <body ng-controller="phoneBookCtrl">
   <div class="jumbotron">
+    
+    <ui-accordions>
+      
+      <ui-accordion title="Lorem ipsum...">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur blanditiis et voluptatem quam nesciunt, eaque dolores illo similique earum consequuntur reprehenderit praesentium consectetur consequatur ab quisquam sed. At, quae laboriosam!
+      </ui-accordion>
+  
+      <ui-accordion title="Tabuada de 7">
+        7 x 1 = 7 <br/>
+        7 x 2 = 14 <br/>
+        7 x 3 = 21 <br/>
+        7 x 4 = 28 <br/>
+        7 x 5 = 35 <br/>
+        7 x 6 = 42 <br/>
+        7 x 7 = 49 <br/>
+        7 x 8 = 56 <br/>
+        7 x 9 = 63 <br/>
+        7 x 10 = 70
+      </ui-accordion>
+      
+    </ui-accordions>
+
     <h4>{{app}}</h4>
     <ui-alert title="OPS, ACONTECEU UM ERRO!" message="error" ng-if="error"></ui-alert>
     <input class="form-control" type="text" ng-model="filtroBusca" placeholder="Buscar contato..."/>
